@@ -1,4 +1,6 @@
-# PGD Cascade Point-Cloud Denoising
+# 基于深度学习的三维点云降噪任务：方法设计与实现
+
+*Method Design and Implementation for Deep Learning-Based 3D Point Cloud Denoising*
 
 This repository contains the B-stage point-cloud denoising code submitted by
 team "我们都有光明的未来" to Track 2 of the Sixth CG Graphics AI Challenge.
