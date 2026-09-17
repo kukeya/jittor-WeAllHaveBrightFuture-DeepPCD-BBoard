@@ -6,8 +6,9 @@ The method trains PGD1 first, then trains PGD2 on the frozen PGD1 predictions
 and clean targets. Inference applies PGD1 followed by two PGD2 passes.
 
 The submitted B-stage result was `Total=81.90`, `CD=70.71`, and `P2S=93.09`.
-Datasets, generated caches, checkpoints, logs, and submission results are not
-included in this repository.
+The two checkpoints required by the inference command are included in
+`checkpoints/`. Datasets, generated caches, logs, and submission results are
+not included.
 
 ## Environment
 
@@ -58,7 +59,8 @@ For PGD2, generate the frozen PGD1-output/clean paired cache with
 
 ## Inference
 
-Use checkpoints compatible with the hashes in `configs/inference/`:
+The required PGD1-e200 and PGD2-e139 checkpoints are in `checkpoints/`; verify
+them with `sha256sum -c checkpoints/SHA256SUMS`.
 
 ```bash
 python scripts/infer_pgd1_pgd2_pgd2.py \
@@ -67,9 +69,9 @@ python scripts/infer_pgd1_pgd2_pgd2.py \
   --output-root outputs/b_predictions \
   --work-root outputs/b_work \
   --pgd1-inference-config configs/inference/pgd1_e200.json \
-  --pgd1-checkpoint /path/to/pgd1_e200.pkl \
+  --pgd1-checkpoint checkpoints/pgd1_e200_step_00712800.pkl \
   --pgd2-inference-config configs/inference/pgd2_e139.json \
-  --pgd2-checkpoint /path/to/pgd2_e139.pkl \
+  --pgd2-checkpoint checkpoints/pgd2_e139_epoch_0139_step_00494006.pkl \
   --devices 0 \
   --random-seed 20260819
 ```
@@ -78,7 +80,7 @@ python scripts/infer_pgd1_pgd2_pgd2.py \
 
 CD is Chamfer distance and P2S is point-to-surface distance; the competition
 score weights the two equally. The reported online result uses the original
-private checkpoints and official data, so a newly trained model may differ.
+checkpoints and official data, so a newly trained model may differ.
 
 ## License
 

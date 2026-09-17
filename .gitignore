@@ -2,7 +2,6 @@
 /data/*
 !/data/README.md
 /outputs/
-/checkpoints/
 /runs/
 /submissions/
 *.log
@@ -22,3 +21,8 @@ __pycache__/
 .DS_Store
 .venv/
 venv/
+
+# Public inference checkpoints required by README.md
+!checkpoints/
+!checkpoints/*.pkl
+!checkpoints/SHA256SUMS
