@@ -1,0 +1,24 @@
+# Generated data, caches, checkpoints, submissions, and run artifacts
+/data/*
+!/data/README.md
+/outputs/
+/checkpoints/
+/runs/
+/submissions/
+*.log
+*.pkl
+*.pt
+*.ckpt
+*.npz
+*.npy
+*.zip
+
+# Python and tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+.DS_Store
+.venv/
+venv/

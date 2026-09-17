@@ -1,0 +1,17 @@
+# Third-party notices
+
+## Method reference
+
+This repository contains an independent, pure-Jittor implementation informed
+by the following paper and its official reference implementation. It is not
+a copy of the reference repository.
+
+- C. Guo, Z. Liu, and Y. He, "Guiding Point Cloud Denoising with Learned
+  Structural Priors," AAAI 2026, DOI: 10.1609/aaai.v40i6.42437.
+- Reference implementation: https://github.com/git-guocc/PGD
+
+## Runtime dependencies
+
+Jittor, NumPy, SciPy, Point Cloud Utils, PyYAML, TensorBoard, and TensorBoardX
+are installed as dependencies. Their licenses and notices remain those of
+their respective upstream projects; see their distributions for details.

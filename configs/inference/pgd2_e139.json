@@ -1,0 +1,19 @@
+{
+  "canonical_config_sha256": "e1da999fd6bda2052ea6f674624c628bdf2a7083efb9e8d17282a9a9f002bf00",
+  "checkpoint_sha256": "9b918a5d2b50a28c640d5bad2faf4367b9577bcb6f30bec053d2a9b0d3f42238",
+  "checkpoint_step": 494006,
+  "data": {},
+  "format": "pcdenoise_inference_config_v1",
+  "model": {
+    "architecture": "pgd",
+    "codebook_sizes": [512, 384, 256, 192],
+    "displacement_scale": 0.1,
+    "ema_momentum": 0.99,
+    "feature_dims": [32, 48, 72, 108, 162],
+    "noise_conditioning": false,
+    "patch_size": 1000,
+    "pointwise_displacement_gate": false,
+    "temperature": 0.1
+  },
+  "use_cuda": true
+}

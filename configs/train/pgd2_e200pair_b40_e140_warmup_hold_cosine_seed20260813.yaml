@@ -1,0 +1,62 @@
+format: pcdenoise_pgd2_train_v1
+
+model:
+  architecture: pgd
+  patch_size: 1000
+  feature_dims: [32, 48, 72, 108, 162]
+  codebook_sizes: [512, 384, 256, 192]
+  temperature: 0.1
+  ema_momentum: 0.99
+  displacement_scale: 0.1
+  noise_conditioning: false
+  pointwise_displacement_gate: false
+
+data:
+  paired_cache: /var/tmp/pcdenoise_pgd2_e200_d679e174_v1/paired_train_seed20260813_e200_d679e174
+  expected_content_sha256: ce324065400ca460f95a0eb9f80e506d1a61304650a464208bee56f5c75795d4
+  expected_pgd1_checkpoint_sha256: d679e174564442f1f6c031b50fbd45f94d6035c7c089e555be5aa54f2834f2c0
+  expected_pgd1_config_sha256: fba86f44277df8d81ff301e6201a4d1157e0a3052658f32f61e8bda572e22d99
+  expected_sample_count: 35534
+  expected_point_count: 50000
+
+training:
+  seed: 20260813
+  sampler: pgd2_epoch_four_patch_v1
+  max_epochs: 140
+  batch_size: 40
+  patches_per_shape: 4
+  prefetch_batches: 4
+  learning_rate: 0.0005
+  learning_rate_schedule:
+    name: warmup_hold_cosine_v1
+    warmup_start_learning_rate: 0.00005
+    warmup_epochs: 1
+    cosine_start_epoch: 9
+    min_learning_rate: 0.00005
+  loss_profile: code_b5dc8be
+  reconstruction_weight: 1.0
+  point_mse_weight: 0.0
+  correspondence_huber_weight: 75.0
+  correspondence_huber_delta: 0.005
+  log_every: 100
+  use_cuda: true
+
+evaluation:
+  pgd1_prediction_root: /var/tmp/pcdenoise_pgd2_e200_d679e174_v1/validation/pgd1_e200_s712800
+  authoritative_noisy_root: /var/tmp/pcdenoise_pgd2_e200_d679e174_v1/validation/val200_authoritative
+  sample_ids: /var/tmp/pcdenoise_pgd2_e200_d679e174_v1/validation/val200_sample_ids.txt
+  expected_pgd1_checkpoint_sha256: d679e174564442f1f6c031b50fbd45f94d6035c7c089e555be5aa54f2834f2c0
+  expected_pgd1_config_sha256: fba86f44277df8d81ff301e6201a4d1157e0a3052658f32f61e8bda572e22d99
+  expected_pgd1_manifest_sha256: 9b974772cadb73552e81281be5b62792065275fb161fab458d6b28d210383dc4
+  expected_sample_ids_sha256: 09816d7c0242bd53670a64ab60ddde70fa97a02b5e6bd5afeb44fd69cbda124b
+  expected_authoritative_inventory_sha256: 69acf0f146a871f81ace71df92d5e3846ad12caf48903220161db1d280a90e5a
+  expected_sample_count: 200
+  patch_size: 1000
+  seed_k: 6.0
+  patch_batch_size: 20
+  niters: 1
+  normalization_mode: noisy_max
+  fusion_mode: hard_best
+  iteration_damping: 1.0
+  workers: 8
+  every_epochs: 1
